@@ -1,13 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navigation-width: 21vw;
+  --bg-primary: #14131a;
+  --card-primary: #1c1b23;
+
+  --btn-highlight: #2bd576;
+  --btn-primary: #3a3942;
+  --btn-secondary: #1c1b23;
+  --button-bg-hover: #515151;
+
+  --text-primary: #8b8a91;
+  --text-secondary: #79787f;
+  --text-info: #4f4f52;
+  --text-highlight: #fff;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-primary);
+  padding: 0;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.card {
+  width: 100%;
+  margin-top: 30px;
+  background: var(--card-primary);
+  color: var(--text-primary);
+  padding: 1.25rem;
+  border-radius: 10px;
+}
+
+.or-card.chakra-card {
+  /* width: 14.5vw; */
+  background: var(--card-primary);
+  color: var(--text-primary);
+}
+.or-projects-card.chakra-card {
+  /* max-width: 20vw; */
+  background: var(--card-primary);
+  color: var(--text-primary);
+}
+
+.or-button.chakra-button {
+  background: var(--btn-primary);
+  color: var(--text-highlight);
+  font-size: 12px;
+}
+
+.or-button.chakra-button:hover {
+  background: var(--btn-primary);
+}
+
+ul li:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
 }
