@@ -294,11 +294,22 @@ export default function PricingPage() {
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-50 px-6 py-6">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 bg-black/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+          <button
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth", // smooth scroll back to top
+              })
+            }
+            className="focus:outline-none"
+          >
+            <img src="/logo.png" className="w-56 cursor-pointer" alt="logo" />
+          </button>
+          {/* <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
             MENTĀMĪ
-          </div>
+          </div> */}
 
           <div className="flex items-center gap-4">
             <a
@@ -325,7 +336,7 @@ export default function PricingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative z-10 px-6 py-16">
+      <section className="relative z-10 px-6 py-16 mt-10">
         <div className="max-w-7xl mx-auto text-center">
           <div
             className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full border border-purple-500/30 backdrop-blur-sm mb-8"
@@ -515,7 +526,8 @@ export default function PricingPage() {
       <footer className="relative z-10 px-6 py-12 border-t border-gray-800/50">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div className="md:col-span-2">
+            <img src="/logo.png" className="w-56 cursor-pointer" alt="logo" />
+            {/* <div className="md:col-span-2">
               <div className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
                 MENTĀMĪ
               </div>
@@ -528,7 +540,7 @@ export default function PricingPage() {
                   <span className="text-white text-sm font-bold">M</span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div>
               <h4 className="text-white font-semibold mb-4">Product</h4>

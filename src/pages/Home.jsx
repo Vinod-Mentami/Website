@@ -169,11 +169,22 @@ export default function MentamiLanding() {
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-50 px-6 py-6">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 bg-black/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+          <button
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth", // smooth scroll back to top
+              })
+            }
+            className="focus:outline-none"
+          >
+            <img src="/logo.png" className="w-56 cursor-pointer" alt="logo" />
+          </button>
+          {/* <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
             MENTĀMĪ
-          </div>
+          </div> */}
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
@@ -226,7 +237,7 @@ export default function MentamiLanding() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative z-10 px-6 py-20 min-h-screen flex items-center"
+        className="relative z-10 px-6 py-20 min-h-screen flex items-center mt-10"
       >
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
@@ -511,7 +522,8 @@ export default function MentamiLanding() {
               Limitless Market Potential
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Transforming education for billions of learners worldwide across every age, country, and subject imaginable
+              Transforming education for billions of learners worldwide across
+              every age, country, and subject imaginable
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto rounded-full mt-8" />
           </div>
@@ -523,10 +535,12 @@ export default function MentamiLanding() {
               {/* Global Reach Card */}
               <div className="group relative bg-gradient-to-br from-purple-900/30 to-cyan-900/30 backdrop-blur-xl p-8 rounded-3xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-500 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-cyan-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 {/* Floating number animation */}
                 <div className="absolute top-4 right-4 opacity-10">
-                  <span className="text-8xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">7B+</span>
+                  <span className="text-8xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                    7B+
+                  </span>
                 </div>
 
                 <div className="relative z-10">
@@ -535,12 +549,22 @@ export default function MentamiLanding() {
                       <Globe className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-3xl font-bold text-white mb-1">7+ Billion</h3>
-                      <p className="text-purple-300 font-medium">Global Customers</p>
+                      <h3 className="text-3xl font-bold text-white mb-1">
+                        7+ Billion
+                      </h3>
+                      <p className="text-purple-300 font-medium">
+                        Global Customers
+                      </p>
                     </div>
                   </div>
                   <p className="text-gray-300 leading-relaxed">
-                    Potential learners from <span className="text-cyan-400 font-semibold">ages 3 and above</span>, spanning every demographic and learning need across the globe. From early childhood development to lifelong learning.
+                    Potential learners from{" "}
+                    <span className="text-cyan-400 font-semibold">
+                      ages 3 and above
+                    </span>
+                    , spanning every demographic and learning need across the
+                    globe. From early childhood development to lifelong
+                    learning.
                   </p>
                 </div>
               </div>
@@ -548,9 +572,11 @@ export default function MentamiLanding() {
               {/* Geographic Coverage Card */}
               <div className="group relative bg-gradient-to-br from-cyan-900/30 to-blue-900/30 backdrop-blur-xl p-8 rounded-3xl border border-cyan-500/30 hover:border-cyan-400/50 transition-all duration-500 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 <div className="absolute top-4 right-4 opacity-10">
-                  <span className="text-8xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">190+</span>
+                  <span className="text-8xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                    190+
+                  </span>
                 </div>
 
                 <div className="relative z-10">
@@ -559,12 +585,21 @@ export default function MentamiLanding() {
                       <Globe className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-3xl font-bold text-white mb-1">190+ Countries</h3>
-                      <p className="text-cyan-300 font-medium">Universal Access</p>
+                      <h3 className="text-3xl font-bold text-white mb-1">
+                        190+ Countries
+                      </h3>
+                      <p className="text-cyan-300 font-medium">
+                        Universal Access
+                      </p>
                     </div>
                   </div>
                   <p className="text-gray-300 leading-relaxed">
-                    Near-universal geographic coverage with <span className="text-purple-400 font-semibold">all major languages</span> supported, ensuring no learner is left behind regardless of location or native language.
+                    Near-universal geographic coverage with{" "}
+                    <span className="text-purple-400 font-semibold">
+                      all major languages
+                    </span>{" "}
+                    supported, ensuring no learner is left behind regardless of
+                    location or native language.
                   </p>
                 </div>
               </div>
@@ -575,25 +610,58 @@ export default function MentamiLanding() {
               <div className="relative h-96 lg:h-[500px]">
                 {/* Central Globe */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-r from-purple-500/40 to-cyan-500/40 rounded-full blur-2xl animate-pulse" />
-                
+
                 {/* Orbiting Connection Points */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80">
                   {/* Connection nodes representing different regions */}
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-purple-400 rounded-full animate-ping" />
-                  <div className="absolute top-1/4 right-0 transform translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-400 rounded-full animate-ping" style={{ animationDelay: '0.5s' }} />
-                  <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-pink-400 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
-                  <div className="absolute top-3/4 right-0 transform translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-400 rounded-full animate-ping" style={{ animationDelay: '1.5s' }} />
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-green-400 rounded-full animate-ping" style={{ animationDelay: '2s' }} />
-                  <div className="absolute top-3/4 left-0 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-yellow-400 rounded-full animate-ping" style={{ animationDelay: '2.5s' }} />
-                  <div className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-orange-400 rounded-full animate-ping" style={{ animationDelay: '3s' }} />
-                  <div className="absolute top-1/4 left-0 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-teal-400 rounded-full animate-ping" style={{ animationDelay: '3.5s' }} />
+                  <div
+                    className="absolute top-1/4 right-0 transform translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-cyan-400 rounded-full animate-ping"
+                    style={{ animationDelay: "0.5s" }}
+                  />
+                  <div
+                    className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-pink-400 rounded-full animate-ping"
+                    style={{ animationDelay: "1s" }}
+                  />
+                  <div
+                    className="absolute top-3/4 right-0 transform translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-400 rounded-full animate-ping"
+                    style={{ animationDelay: "1.5s" }}
+                  />
+                  <div
+                    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-green-400 rounded-full animate-ping"
+                    style={{ animationDelay: "2s" }}
+                  />
+                  <div
+                    className="absolute top-3/4 left-0 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-yellow-400 rounded-full animate-ping"
+                    style={{ animationDelay: "2.5s" }}
+                  />
+                  <div
+                    className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-orange-400 rounded-full animate-ping"
+                    style={{ animationDelay: "3s" }}
+                  />
+                  <div
+                    className="absolute top-1/4 left-0 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-teal-400 rounded-full animate-ping"
+                    style={{ animationDelay: "3.5s" }}
+                  />
                 </div>
 
                 {/* Orbital Rings */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-2 border-purple-500/20 rounded-full animate-spin" style={{ animationDuration: '20s' }} />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 border-2 border-cyan-500/15 rounded-full animate-spin" style={{ animationDuration: '30s', animationDirection: 'reverse' }} />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-purple-500/10 rounded-full animate-spin" style={{ animationDuration: '40s' }} />
-                
+                <div
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-2 border-purple-500/20 rounded-full animate-spin"
+                  style={{ animationDuration: "20s" }}
+                />
+                <div
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 border-2 border-cyan-500/15 rounded-full animate-spin"
+                  style={{
+                    animationDuration: "30s",
+                    animationDirection: "reverse",
+                  }}
+                />
+                <div
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 border border-purple-500/10 rounded-full animate-spin"
+                  style={{ animationDuration: "40s" }}
+                />
+
                 {/* Data streams */}
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                   <div className="w-2 h-32 bg-gradient-to-t from-transparent via-purple-400/50 to-transparent animate-pulse absolute -top-16 left-1/2 transform -translate-x-1/2" />
@@ -612,52 +680,76 @@ export default function MentamiLanding() {
                   <BookOpen className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">Comprehensive Subject Range</h3>
-                  <p className="text-gray-400">From basics to advanced specialization</p>
+                  <h3 className="text-2xl font-bold text-white">
+                    Comprehensive Subject Range
+                  </h3>
+                  <p className="text-gray-400">
+                    From basics to advanced specialization
+                  </p>
                 </div>
               </div>
-              
+
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-lg font-semibold text-purple-300 mb-3">Academic Subjects</h4>
+                  <h4 className="text-lg font-semibold text-purple-300 mb-3">
+                    Academic Subjects
+                  </h4>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                      <span className="text-gray-300">Elementary Mathematics to Advanced Physics</span>
+                      <span className="text-gray-300">
+                        Elementary Mathematics to Advanced Physics
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                      <span className="text-gray-300">Biology, Chemistry & Life Sciences</span>
+                      <span className="text-gray-300">
+                        Biology, Chemistry & Life Sciences
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
-                      <span className="text-gray-300">Languages, Literature & History</span>
+                      <span className="text-gray-300">
+                        Languages, Literature & History
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      <span className="text-gray-300">Arts, Music & Creative Studies</span>
+                      <span className="text-gray-300">
+                        Arts, Music & Creative Studies
+                      </span>
                     </div>
                   </div>
                 </div>
-                
+
                 <div>
-                  <h4 className="text-lg font-semibold text-cyan-300 mb-3">Professional Training</h4>
+                  <h4 className="text-lg font-semibold text-cyan-300 mb-3">
+                    Professional Training
+                  </h4>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                      <span className="text-gray-300">Vocational & Technical Skills</span>
+                      <span className="text-gray-300">
+                        Vocational & Technical Skills
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                      <span className="text-gray-300">Professional Certifications</span>
+                      <span className="text-gray-300">
+                        Professional Certifications
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                      <span className="text-gray-300">Corporate Training Programs</span>
+                      <span className="text-gray-300">
+                        Corporate Training Programs
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                      <span className="text-gray-300">Lifelong Learning Pathways</span>
+                      <span className="text-gray-300">
+                        Lifelong Learning Pathways
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -671,31 +763,45 @@ export default function MentamiLanding() {
                   <Target className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">Revenue Streams</h3>
-                  <p className="text-gray-400 text-sm">Multiple monetization channels</p>
+                  <h3 className="text-xl font-bold text-white">
+                    Revenue Streams
+                  </h3>
+                  <p className="text-gray-400 text-sm">
+                    Multiple monetization channels
+                  </p>
                 </div>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg backdrop-blur-sm">
                   <div className="w-3 h-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></div>
-                  <span className="text-gray-300 text-sm">Subscription-based Platform Access</span>
+                  <span className="text-gray-300 text-sm">
+                    Subscription-based Platform Access
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg backdrop-blur-sm">
                   <div className="w-3 h-3 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full"></div>
-                  <span className="text-gray-300 text-sm">Voice-Activated Mobile Apps</span>
+                  <span className="text-gray-300 text-sm">
+                    Voice-Activated Mobile Apps
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg backdrop-blur-sm">
                   <div className="w-3 h-3 bg-gradient-to-r from-green-400 to-teal-400 rounded-full"></div>
-                  <span className="text-gray-300 text-sm">Wearable Device Integration</span>
+                  <span className="text-gray-300 text-sm">
+                    Wearable Device Integration
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg backdrop-blur-sm">
                   <div className="w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full"></div>
-                  <span className="text-gray-300 text-sm">In-App Premium Content</span>
+                  <span className="text-gray-300 text-sm">
+                    In-App Premium Content
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg backdrop-blur-sm">
                   <div className="w-3 h-3 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full"></div>
-                  <span className="text-gray-300 text-sm">Future: Embedded Chip Technology</span>
+                  <span className="text-gray-300 text-sm">
+                    Future: Embedded Chip Technology
+                  </span>
                 </div>
               </div>
             </div>
@@ -706,17 +812,31 @@ export default function MentamiLanding() {
             <div className="max-w-4xl mx-auto">
               <div className="flex items-center justify-center gap-3 mb-6">
                 <Sparkles className="w-8 h-8 text-purple-400" />
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">The Future of Learning</h3>
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                  The Future of Learning
+                </h3>
                 <Sparkles className="w-8 h-8 text-cyan-400" />
               </div>
               <p className="text-xl text-gray-300 leading-relaxed mb-8">
-                Imagine a world where learning adapts to every individual, accessible through any device, in any language, at any time. Where embedded technology makes education as natural as breathing, and where 7+ billion minds can unlock their full potential through immersive experiences.
+                Imagine a world where learning adapts to every individual,
+                accessible through any device, in any language, at any time.
+                Where embedded technology makes education as natural as
+                breathing, and where 7+ billion minds can unlock their full
+                potential through immersive experiences.
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm">
-                <span className="px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-300">Universal Access</span>
-                <span className="px-4 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-cyan-300">Infinite Scale</span>
-                <span className="px-4 py-2 bg-pink-500/20 border border-pink-500/30 rounded-full text-pink-300">Embedded Future</span>
-                <span className="px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300">Global Impact</span>
+                <span className="px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-purple-300">
+                  Universal Access
+                </span>
+                <span className="px-4 py-2 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-cyan-300">
+                  Infinite Scale
+                </span>
+                <span className="px-4 py-2 bg-pink-500/20 border border-pink-500/30 rounded-full text-pink-300">
+                  Embedded Future
+                </span>
+                <span className="px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300">
+                  Global Impact
+                </span>
               </div>
             </div>
           </div>
@@ -941,10 +1061,11 @@ export default function MentamiLanding() {
 
       {/* Footer */}
       <footer className="relative z-10 px-6 py-12 border-t border-gray-800/50">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+        <div className="flex flex-col justify-center items-center gap-5 max-w-7xl mx-auto text-center">
+          <img src="/logo.png" className="w-56 cursor-pointer" alt="logo" />
+          {/* <div className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
             MENTĀMĪ
-          </div>
+          </div> */}
           <p className="text-gray-400">
             © 2025 MENTĀMĪ. All rights reserved. Transforming education through
             immersive technology.
