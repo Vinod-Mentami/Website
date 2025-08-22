@@ -1199,7 +1199,7 @@ export default function MentamiLanding() {
             </p>
 
             {/* Developer Credit */}
-            <div className="text-gray-400 text-sm flex items-center space-x-2">
+            {/* <div className="text-gray-400 text-sm flex items-center space-x-2">
               <span>Designed, Developed & Maintained by</span>
               <a
                 href="https://db-media.vercel.app"
@@ -1209,7 +1209,7 @@ export default function MentamiLanding() {
               >
                 db media
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </footer>
