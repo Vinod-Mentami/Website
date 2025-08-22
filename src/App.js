@@ -2,13 +2,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import ErrorPage from "./pages/ErrorPage";
 import MentamiLanding from "./pages/Home";
+import PricingPage from "./pages/Pricing";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-        <Route index element={<MentamiLanding />} />
+          <Route index element={<MentamiLanding />} />
+          <Route path="pricing" element={<PricingPage />} />
+          <Route path="contact-us" element={<ContactPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
