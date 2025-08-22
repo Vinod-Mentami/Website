@@ -17,6 +17,8 @@ import {
   BookOpen,
 } from "lucide-react";
 import PricingPage from "./Pricing";
+import { Link, useNavigate } from "react-router-dom";
+import FAQSection from "../components/FAQSection";
 
 const FloatingOrb = ({ className, delay = 0 }) => {
   return (
@@ -82,6 +84,7 @@ const ValueCard = ({ icon: Icon, title, description, delay = 0 }) => {
 
 export default function MentamiLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [currentView, setCurrentView] = useState("home"); // 'home' or 'pricing'
@@ -105,23 +108,22 @@ export default function MentamiLanding() {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    // Handle pricing routing separately
+    // Navigate to pricing route
     if (sectionId.toLowerCase() === "pricing") {
-      setCurrentView("pricing");
+      navigate("/pricing");
       setIsMenuOpen(false);
-      // Scroll to top when switching to pricing page
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    if (sectionId.toLowerCase() === "contact") {
+      navigate("/contact-us");
+      setIsMenuOpen(false);
       return;
     }
 
-    // Handle other sections with smooth scrolling
+    // Handle scrolling for other sections
     const element = document.getElementById(sectionId.toLowerCase());
     if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     setIsMenuOpen(false);
   };
@@ -131,20 +133,20 @@ export default function MentamiLanding() {
     scrollToSection(item.toLowerCase());
   };
 
-  const navigateToHome = () => {
-    setCurrentView("home");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  // const navigateToHome = () => {
+  //   setCurrentView("home");
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  // };
 
-  // If current view is pricing, render the pricing component
-  if (currentView === "pricing") {
-    return (
-      <div>
-        {/* You can render your PricingPage component here */}
-        <PricingPage onNavigateToHome={navigateToHome} />
-      </div>
-    );
-  }
+  // // If current view is pricing, render the pricing component
+  // if (currentView === "pricing") {
+  //   return (
+  //     <div>
+  //       {/* You can render your PricingPage component here */}
+  //       <PricingPage onNavigateToHome={navigateToHome} />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative px-10">
@@ -188,7 +190,7 @@ export default function MentamiLanding() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            {["Features", "About", "Pricing", "Contact"].map((item, index) => (
+            {["About", "Features", "Pricing", "Contact"].map((item, index) => (
               <button
                 key={item}
                 className="relative group py-2 px-4 transition-all duration-300 hover:text-purple-400 bg-transparent border-none cursor-pointer text-white"
@@ -278,20 +280,26 @@ export default function MentamiLanding() {
               className="flex flex-col sm:flex-row gap-4"
               style={{ transform: `translateY(${scrollY * -0.1}px)` }}
             >
-              <button className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25">
+              <Link
+                to="/contact-us"
+                className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25"
+              >
                 <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 <span className="relative flex items-center gap-2">
-                  Start Learning{" "}
+                  Get in Touch{" "}
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
-              </button>
+              </Link>
 
-              <button className="group px-8 py-4 border border-gray-600 rounded-xl font-semibold text-white hover:border-purple-500 transition-all duration-300 hover:bg-purple-500/10 backdrop-blur-sm">
+              <Link
+                to="/contact-us"
+                className="group px-8 py-4 border border-gray-600 rounded-xl font-semibold text-white hover:border-purple-500 transition-all duration-300 hover:bg-purple-500/10 backdrop-blur-sm"
+              >
                 <span className="flex items-center gap-2">
                   <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />{" "}
-                  Watch Demo
+                  Request a Demo
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -364,7 +372,7 @@ export default function MentamiLanding() {
                 <div className="pl-8 space-y-6">
                   <p className="text-lg text-gray-300 leading-relaxed">
                     <span className="text-purple-400 font-semibold">
-                      Mentami
+                      Mentāmī ai
                     </span>{" "}
                     was founded with a vision of transforming learning not only
                     within a classroom, but throughout life. We believe the best
@@ -392,8 +400,8 @@ export default function MentamiLanding() {
                       AI, machine learning, AR/VR, 3D, immersive environments,
                       and gamification
                     </span>
-                    , Mentami delivers lessons that are experiential, innovative
-                    and accessible any time and from anywhere.
+                    , Mentāmī ai delivers lessons that are experiential,
+                    innovative and accessible any time and from anywhere.
                   </p>
                 </div>
               </div>
@@ -856,8 +864,8 @@ export default function MentamiLanding() {
               All Platforms Supported
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Experience MENTĀMĪ across all your devices and VR/AR platforms for
-              seamless learning anywhere
+              Experience MENTĀMĪ AI across all your devices and VR/AR platforms
+              for seamless learning anywhere
             </p>
           </div>
 
@@ -1033,6 +1041,11 @@ export default function MentamiLanding() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="features" className="relative z-10 px-6 py-20">
+        <FAQSection />
+      </section>
+
       {/* CTA Section */}
       <section id="contact" className="relative z-10 px-6 py-20">
         <div className="max-w-4xl mx-auto text-center">
@@ -1048,28 +1061,156 @@ export default function MentamiLanding() {
               future of education.
             </p>
 
-            <button className="relative z-10 group px-10 py-5 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-xl font-bold text-lg text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25">
-              <div className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              <span className="relative flex items-center gap-2">
-                Get Started Today{" "}
-                <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            <Link
+              to="/contact-us"
+              className="group relative inline-flex items-center justify-center px-8 py-4 
+             bg-gradient-to-r from-purple-600 to-cyan-600 rounded-xl 
+             font-semibold text-white overflow-hidden 
+             transition-all duration-300 hover:scale-105 
+             hover:shadow-2xl hover:shadow-purple-500/25"
+            >
+              {/* Sliding shine effect */}
+              <span
+                className="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full 
+               group-hover:translate-x-full transition-transform duration-700"
+              />
+
+              {/* Button content */}
+              <span className="relative flex items-center gap-2 z-10">
+                Get in Touch
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
-            </button>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 px-6 py-12 border-t border-gray-800/50">
-        <div className="flex flex-col justify-center items-center gap-5 max-w-7xl mx-auto text-center">
-          <img src="/logo.png" className="w-56 cursor-pointer" alt="logo" />
-          {/* <div className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-            MENTĀMĪ
-          </div> */}
-          <p className="text-gray-400">
-            © 2025 MENTĀMĪ. All rights reserved. Transforming education through
-            immersive technology.
-          </p>
+      <footer className="relative z-10 px-6 py-16 border-t border-gray-800/50 overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-purple-500/30 to-cyan-500/30 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-16 w-24 h-24 bg-gradient-to-br from-cyan-500/30 to-purple-500/30 rounded-full blur-xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-br from-purple-400/20 to-cyan-400/20 rounded-full blur-2xl animate-pulse delay-500"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto">
+          {/* Main Content Grid */}
+          <div className="w-full flex justify-center">
+            {/* Logo & Brand Section */}
+            <div className="w-full flex justify-between items-center ">
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <img
+                  src="/logo.png"
+                  className="relative w-56 cursor-pointer transition-transform duration-300 hover:scale-105"
+                  alt="MENTĀMĪ logo"
+                />
+              </div>
+
+              {/* Social Media Links */}
+              <div className="flex space-x-5">
+                {/* Instagram */}
+                <div className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-cyan-500/20 transition-all duration-300 cursor-pointer group border border-gray-700/50 hover:border-purple-500/30">
+                  <svg
+                    className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  </svg>
+                </div>
+
+                {/* Facebook */}
+                <div className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-cyan-500/20 transition-all duration-300 cursor-pointer group border border-gray-700/50 hover:border-purple-500/30">
+                  <svg
+                    className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </div>
+
+                {/* LinkedIn */}
+                <div className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-cyan-500/20 transition-all duration-300 cursor-pointer group border border-gray-700/50 hover:border-purple-500/30">
+                  <svg
+                    className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                </div>
+
+                {/* Twitter/X */}
+                <div className="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-cyan-500/20 transition-all duration-300 cursor-pointer group border border-gray-700/50 hover:border-purple-500/30">
+                  <svg
+                    className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="relative my-8">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-800"></div>
+            </div>
+            <div className="relative flex justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full flex items-center justify-center">
+                <div className="w-3 h-3 bg-gray-900 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Section */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            {/* Policy */}
+            <div className="flex flex-wrap gap-6 text-sm">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
+                Terms of Service
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors duration-300"
+              >
+                Cookie Policy
+              </a>
+            </div>
+
+            {/* Copyright */}
+            <p className="text-gray-400 text-sm">
+              © {new Date().getFullYear()} MENTĀMĪ AI. All rights reserved
+            </p>
+
+            {/* Developer Credit */}
+            <div className="text-gray-400 text-sm flex items-center space-x-2">
+              <span>Designed, Developed & Maintained by</span>
+              <a
+                href="https://db-media.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition-colors font-medium"
+              >
+                db media
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
